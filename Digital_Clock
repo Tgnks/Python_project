@@ -1,0 +1,58 @@
+#import tkinter as tk: This imports the tkinter library, which is 
+#the standard Python library for creating graphical user interfaces (GUIs). 
+#By using as tk, we can reference tkinter 
+#with a shorter name (tk instead of tkinter).
+
+import tkinter as tk
+
+# from time import strftime: This imports the strftime function from Python’s time module.
+#  The strftime function formats the time in a string format 
+#  (in this case, it's used to get the current time and date in a specific format).
+from time import strftime
+# root = tk.Tk(): 
+# This line creates the main window for the GUI application. 
+# The Tk() function initializes the main window object and assigns it to the variable root.
+#  All GUI elements will be placed in this window.
+root = tk.Tk()
+# root.title("Naveen Digital Clock"): 
+# This sets the title of the window to "Naveen Digital Clock". 
+# The title appears at the top of the window.
+root.title("Naveen Digital Clock")
+# def time():: 
+# This defines a function named time. 
+# The purpose of this function is to update the digital clock
+# on the screen by fetching and displaying the current time and date.
+def time():
+# string = strftime('%H:%M:%S %p \n %D'): 
+# The strftime function is called here to get the current time and date in a specific format. 
+# Here's a breakdown of the format:
+# %H: Hour (24-hour format).
+# %M: Minutes.
+# %S: Seconds.
+# %p: AM/PM.
+# \n: A newline character, so the date will appear on the next line.
+# %D: Date in MM/DD/YY format. 
+# This creates a string with the formatted time and date, and it's stored in the variable string.
+    string = strftime('%H:%M:%S %p \n %D')
+# label.config(text=string): 
+# This updates the text of
+# the label (created later) to the newly formatted string, 
+# so the clock on the screen is updated.
+    label.config(text=string)
+# label.after(1000, time): 
+# This schedules the time function to be called again after 1000 milliseconds (1 second).
+# This creates the effect of the clock updating every second.
+    label.after(1000, time)
+
+label =tk.Label(root, font=('calibari', 50, 'bold'), background='blue', foreground='black' )
+label.pack(anchor='center')
+# This line simply calls the time() function defined earlier to start updating the time. 
+# It is executed once when the program starts.
+time()
+#root.mainloop(): 
+# This is the main event loop of the program.
+#  It keeps the window open and waits for user interactions. 
+#  Without this line, the window would open and immediately close. 
+#  The loop continues running as long as the window is open, and 
+#  it allows the program to stay responsive (updating the time, handling user input, etc.).
+root.mainloop()
